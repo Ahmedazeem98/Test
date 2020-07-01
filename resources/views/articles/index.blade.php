@@ -16,7 +16,11 @@
             <br>
             @if(auth()->check() && auth()->user()->id == $article->user_id)
                 <a href="{{route('articles.edit',['id' => $article->id])}}" type="button" class="btn btn-primary">Edit</a>
-                <a href="{{route('articles.destroy',['id' => $article->id])}}" type="button" class="btn btn-danger">Delet</a>
+                <form style="display: inline-block" action="{{route('articles.destroy',['id' => $article->id])}}" method="post">
+                    @csrf
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             @endif
            
         </div><!-- /.blog-post -->
