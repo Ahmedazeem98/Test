@@ -2,8 +2,9 @@
 
 @section('content')
 
-<form action="{{route('articles.store')}}" method="post">
+<form action="{{route('articles.update',['id' => $article->id])}}" method="post">
     @csrf
+    <input type="hidden" name="_method" value="PUT">
     <div class="form-group">
       <label>Post title:</label>
       <input type="text" name="title" class="form-control" value="{{$article->title}}" required>
