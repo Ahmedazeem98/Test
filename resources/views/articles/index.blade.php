@@ -14,7 +14,7 @@
             <p>{{$article->body}}</p>
 
             <br>
-            @if(auth()->user()->id == $article->user_id)
+            @if(auth()->check() && auth()->user()->id == $article->user_id)
                 <a href="{{route('articles.edit',['id' => $article->id])}}" type="button" class="btn btn-primary">Edit</a>
                 <a href="{{route('articles.destroy',['id' => $article->id])}}" type="button" class="btn btn-danger">Delet</a>
             @endif
